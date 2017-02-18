@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Psychic Game</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+
+  </head>
+  <body>
+  <h1>Guess what letter I'm thinking of</h1>
+  
+  <script type="text/javascript">
+$(document).ready(function() {
+	var Wins: =0;
+	var Losses: =0;
+	var Guessesleft: =0;
+	var lettersGuessed: =0;
+	var letters: = [ 
+               "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
+               "p","q","r","s","t","u","v","w","x","y","z"
+               ];
+     var lettertoguess: 0;
+
+     document.onkeyup = function(event) {
+      var userGuess = event.key;
+      }        
+
+	function computerPickletter 
+	var letterIndex = Math.floor(Math.random() * letters.length);
+   letterToGuess = letters[letterIndex];
+   Guessesleft = 0;
+   lettersGuessed = [];
+   
+   
+   	if (userGuess === "letterToGuess") {
+   		 wins++;
+}
+
+	if (userGuess != "lettertoguess") {
+		losses++;
+		lettersGuessed.push(letterPressed)
+	}
+
+   		 
+
+
+
+  </body>
+</html>
