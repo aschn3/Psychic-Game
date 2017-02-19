@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>The Psychic Game</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>The Psychic Game</title>
+	</head>
+	<body>
+		
+		<div id="game">
+			<p>Guess what letter I'm thinking of</p>
+		</div>
+		<script type="text/javascript">
+			var Wins=0;
+			var Losses=0;
+			var Guessesleft=9;
+			var lettersGuessed=0;
+			var letters= [
+		"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
+		"p","q","r","s","t","u","v","w","x","y","z"
+		];
+		
+			function computerPickletter () {
+				var letterIndex = Math.floor(Math.random() * letters.length);
+				letterToGuess = letters[letterIndex];
+				Guessesleft = 0;
+				lettersGuessed = [];
+			}
+		computerPickletter();
+		console.log("Computers letter: " + letterToGuess)
+		document.onkeyup = function(event) {
+		var userGuess = event.key;
+		alert(userGuess);
+			if (userGuess === letterToGuess) {
+				alert("You win");
+				Wins++;
+			}
+				//reset game if there is a win
+		        //limit the user guess to 9
+				// no duplicate letters gueesed
+		
+		else   {
+				
+		
+				
+				lettersGuessed.push(userGuess);
+				console.log(lettersGuessed);
+			
+				Losses++;
+				
 
-
-
-  </head>
-  <body>
-  <h1>Guess what letter I'm thinking of</h1>
-  
-  <script type="text/javascript">
-$(document).ready(function() {
-	var Wins: =0;
-	var Losses: =0;
-	var Guessesleft: =0;
-	var lettersGuessed: =0;
-	var letters: = [ 
-               "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
-               "p","q","r","s","t","u","v","w","x","y","z"
-               ];
-     var lettertoguess: 0;
-
-     document.onkeyup = function(event) {
-      var userGuess = event.key;
-      }        
-
-	function computerPickletter 
-	var letterIndex = Math.floor(Math.random() * letters.length);
-   letterToGuess = letters[letterIndex];
-   Guessesleft = 0;
-   lettersGuessed = [];
-   
-   
-   	if (userGuess === "letterToGuess") {
-   		 wins++;
-}
-
-	if (userGuess != "lettertoguess") {
-		losses++;
-		lettersGuessed.push(letterPressed)
-	}
-
-   		 
-
-
-
-  </body>
+				//results to DOM
+				var html = "<p>Guess what letter I'm Thinking of</p>" +
+				"<p>Wins: " + Wins + "</p>" +
+		"<p>Losses: " + Losses + "</p>" +
+		"<p>Guesses left: " + Guessesleft + "</p>" +
+		"<p>Your guesses so far: " + lettersGuessed + "</p>";
+		document.querySelector("#game").innerHTML = html;
+								
+				}
+			
+				};
+		</script>
+	</body>
 </html>
