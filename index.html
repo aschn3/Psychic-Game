@@ -12,7 +12,7 @@
 		<script type="text/javascript">
 			var Wins=0;
 			var Losses=0;
-			var Guessesleft=9;
+			var Guessesleft=0;
 			var lettersGuessed=0;
 			var letters= [
 		"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
@@ -22,20 +22,26 @@
 			function computerPickletter () {
 				var letterIndex = Math.floor(Math.random() * letters.length);
 				letterToGuess = letters[letterIndex];
-				Guessesleft = 0;
+				Guessesleft = 9;
 				lettersGuessed = [];
 			}
 		computerPickletter();
 		console.log("Computers letter: " + letterToGuess)
 		document.onkeyup = function(event) {
 		var userGuess = event.key;
+		Guessesleft--;
 		alert(userGuess);
-			if (userGuess === letterToGuess) {
-				alert("You win");
+			if (userGuess === letterToGuess)			 {
 				Wins++;
+				alert("You win");
+				reset();
 			}
 				//reset game if there is a win
-		        //limit the user guess to 9
+		if  (Guessesleft === 0) {
+			Losses++;
+			reset();
+		}
+		
 				// no duplicate letters gueesed
 		
 		else   {
@@ -44,13 +50,15 @@
 				
 				lettersGuessed.push(userGuess);
 				console.log(lettersGuessed);
-			
-				Losses++;
+				Guessesleft -1;
+			//limit the user guess to 9
 				
-
+			
+				
+				
 				//results to DOM
 				var html = "<p>Guess what letter I'm Thinking of</p>" +
-				"<p>Wins: " + Wins + "</p>" +
+		"<p>Wins: " + Wins + "</p>" +
 		"<p>Losses: " + Losses + "</p>" +
 		"<p>Guesses left: " + Guessesleft + "</p>" +
 		"<p>Your guesses so far: " + lettersGuessed + "</p>";
@@ -58,6 +66,16 @@
 								
 				}
 			
+function reset () {
+				Guessesleft = 9;
+				lettersGuessed = [];	
+				computerPickletter();
+				console.log("Computers letter: " + letterToGuess)
+			}
+
+
+
+
 				};
 		</script>
 	</body>
